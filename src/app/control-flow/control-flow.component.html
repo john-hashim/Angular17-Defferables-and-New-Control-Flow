@@ -1,0 +1,42 @@
+<div *ngIf="bestClub; else elseTemplate">Real Madrird</div>
+<ng-template #elseTemplate>
+  <div>Barcelona</div>
+</ng-template>
+
+@if (bestClub) {
+<div>RealMadrid</div>
+} @else {
+<div>Barcelona</div>
+}
+
+<button (click)="bestClub = !bestClub">toggle</button>
+
+-----------------------------------------------
+
+<div [ngSwitch]="clubs">
+  <div *ngSwitchCase="'real'">Real Madrid</div>
+  <div *ngSwitchCase="'barca'">Barceloan</div>
+</div>
+
+@switch (clubs) { @case ('real') {
+<div>Real Madrid</div>
+} @case ('barca') {
+<div>Barcelona</div>
+} }
+
+<button (click)="clubs = 'real'">real btn</button>
+<button (click)="clubs = 'barca'">barca btn</button>
+
+----------------------------------------------------- @for (item of clubs2;
+track $index) {
+<li>{{ item }} {{ $index }}</li>
+}@empty {
+<div>No clubs</div>
+}
+
+<ul>
+  @for (service of clubs2; track service; let i = $index; let first = $first;
+  let last = $last; let even = $even; let odd = $odd ) {
+  <li>{{ i }} {{ first }} {{ last }} {{ even }} {{ odd }}</li>
+  }
+</ul>
